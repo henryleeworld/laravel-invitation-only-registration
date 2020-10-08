@@ -13,15 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 /**
  * Override the default auth register route to add middleware.
  */
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register')->middleware('hasInvitation');
-Route::get('register/request', 'Auth\RegisterController@requestInvitation')->name('requestInvitation');
+Route::get('register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register')->middleware('hasInvitation');
+Route::get('register/request', 'App\Http\Controllers\Auth\RegisterController@requestInvitation')->name('requestInvitation');
 
 /**
  * Invitations group with auth middleware.
@@ -31,10 +32,10 @@ Route::group([
     'middleware' => ['auth', 'admin'],
     'prefix' => 'invitations'
 ], function() {
-    Route::get('', 'InvitationsController@index')->name('showInvitations');
+    Route::get('', 'App\Http\Controllers\InvitationsController@index')->name('showInvitations');
 });
 
 /**
  * Route for storing the invitation. Only for guest users.
  */
-Route::post('invitations', 'InvitationsController@store')->middleware('guest')->name('storeInvitation');
+Route::post('invitations', 'App\Http\Controllers\InvitationsController@store')->middleware('guest')->name('storeInvitation');

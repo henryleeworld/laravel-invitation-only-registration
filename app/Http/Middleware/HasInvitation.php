@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Invitation;
+use App\Models\Invitation;
 use Closure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreInvitationRequest;
-use App\Invitation;
+use App\Models\Invitation;
 use Illuminate\Http\Request;
 
 class InvitationsController extends Controller

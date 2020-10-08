@@ -1,7 +1,10 @@
 <?php
 
-use \Carbon\Carbon;
+namespace Database\Seeders;
+
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,7 +16,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name'          => '管理者',
+            'name'          => 'Administrator',
             'email'         => 'admin@admin.com',
             'password'      => bcrypt('password'),
             'role_id'       => 1,
