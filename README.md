@@ -1,4 +1,4 @@
-# Laravel 8 透過邀請註冊帳戶
+# Laravel 10 透過邀請註冊帳戶
 
 把邀請註冊連結張貼到申請者的電子郵件，申請者藉由該網址即可進入註冊頁面進行註冊。
 
@@ -20,14 +20,22 @@ $ php artisan key:generate
 ```sh
 $ php artisan migrate --seed
 ```
+- 執行安裝 Vite 和 Laravel 擴充套件引用的依賴項目。
+```sh
+$ npm install
+```
+- 執行正式環境版本化資源管道並編譯。
+```sh
+$ npm run build
+```
 - 在瀏覽器中輸入已定義的路由 URL 來訪問，例如：http://127.0.0.1:8000。
 - 你可以登入經由 `/login` 來進行登入，預設的電子郵件和密碼分別為 __admin@admin.com__ 和 __password__ 。
 
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/cn4jY2j.png)
+![](https://i.imgur.com/U1hqNaO.png)
 > 使用者發送邀請請求給管理者
 
-![](https://i.imgur.com/WSjWBPT.png)
+![](https://i.imgur.com/1GVy4xQ.png)
 > 管理者身分登入系統後，複製邀請連結轉發送給申請註冊的使用者以進行註冊

@@ -71,7 +71,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Models\User
      */
     protected function create(array $data)
     {
@@ -81,7 +81,6 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-
 
     /**
      * Override the application registration form. Get the email that has been associated with the invitation and

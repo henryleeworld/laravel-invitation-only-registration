@@ -1,4 +1,5 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app')
+@section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -19,21 +20,21 @@
                     <form class="form-horizontal" method="POST" action="{{ route('storeInvitation') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">{{ __('E-Mail Address') }}</label>
+                        <div class="row mb-3 {{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-sm-2 col-form-label text-md-start">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-sm-10">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus />
 
-                                @if ($errors->has('email'))
+                                @error('email')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('email') }}</strong>
+                                    <strong>{{ $message }}</strong>
                                 </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
+                        <div class="row mb-0">
+                            <div class="col-md-6">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Request An Invitation') }}
                                 </button>
