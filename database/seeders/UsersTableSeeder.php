@@ -2,23 +2,22 @@
 
 namespace Database\Seeders;
 
-use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
-     * @return void
+     * Run the database seeders.
      */
-    public function run()
+    public function run(): void
     {
         DB::table('users')->insert([
-            'name'          => 'Administrator',
+            'name'          => __('Administrator'),
             'email'         => 'admin@admin.com',
-            'password'      => 'password',
+            'password'      => Hash::make('password'),
             'role_id'       => 1,
             'created_at'    => Carbon::now()
         ]);

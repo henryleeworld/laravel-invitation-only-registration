@@ -5,23 +5,13 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvitationsController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 Route::redirect('/', '/login');
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 /**
  * Override the default auth register route to add middleware.
  */
-Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register')->middleware('hasInvitation');
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register')->middleware('has.invitation');
 Route::get('register/request', [RegisterController::class, 'requestInvitation'])->name('requestInvitation');
 /**
  * Invitations group with auth middleware.

@@ -5,17 +5,17 @@ namespace App\Http\Middleware;
 use App\Models\Invitation;
 use Closure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class HasInvitation
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         /**
          * Only for GET requests. Otherwise, this middleware will block our registration.
@@ -50,7 +50,6 @@ class HasInvitation
                 return redirect(route('login'))->with('error', __('The invitation link has already been used.'));
             }
         }
-
         return $next($request);
     }
 }
