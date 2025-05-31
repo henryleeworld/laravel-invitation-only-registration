@@ -50,6 +50,7 @@ class HasInvitation
                 return redirect(route('login'))->with('error', __('The invitation link has already been used.'));
             }
         }
+
         return $next($request);
     }
 }
