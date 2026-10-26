@@ -2,19 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 
+#[Fillable(['email', 'invitation_token'])]
 class Invitation extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    protected $fillable = [
-        'email', 'invitation_token'
-    ];
-
     /**
      * Generate a new invitation token.
      */

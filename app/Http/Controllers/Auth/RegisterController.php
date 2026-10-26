@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\View\View;
 
 class RegisterController extends Controller
 {
@@ -42,18 +43,8 @@ class RegisterController extends Controller
     }
 
     /**
-     * Request invitation form.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function requestInvitation() {
-        return view('auth.request');
-    }
-
-    /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -68,8 +59,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
-     * @return \App\Models\User
+     * @return User
      */
     protected function create(array $data)
     {
@@ -81,11 +71,22 @@ class RegisterController extends Controller
     }
 
     /**
-     * Override the application registration form. Get the email that has been associated with the invitation and
+     * Request invitation form.
+     *
+     * @return View
+     */
+    public function requestInvitation()
+    {
+        return view('auth.request');
+    }
+
+    /**
+     * Override the application registration form.
+     * Get the email that has been associated with the invitation and
      * pass it to the view.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return View
      */
     public function showRegistrationForm(Request $request)
     {
@@ -99,9 +100,11 @@ class RegisterController extends Controller
     /**
      * After user registered, update the invitation registered_at.
      *
-     * @param $user
+     * @param  Request  $request
+     * @param  mixed  $user
+     * @return mixed
      */
-    public function registered(Request $request, $user)
+    protected function registered(Request $request, $user)
     {
         $invitation = Invitation::where('email', $user->email)->firstOrFail();
         $invitation->registered_at = $user->created_at;

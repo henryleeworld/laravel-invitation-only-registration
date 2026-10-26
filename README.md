@@ -1,4 +1,4 @@
-# Laravel 12 透過邀請註冊帳號
+# Laravel 13 透過邀請註冊帳號
 
 把邀請註冊連結張貼到申請者的電子郵件，申請者藉由該網址即可進入註冊頁面進行註冊。
 
@@ -34,8 +34,8 @@ $ npm run build
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/lLNpLKQ.png)
+![](https://i.imgur.com/aoaBXJ7.png)
 > 使用者發送邀請請求給管理者
 
-![](https://i.imgur.com/3y2YStS.png)
+![](https://i.imgur.com/lYGHXlS.png)
 > 管理者身分登入系統後，複製邀請連結轉發送給申請註冊的使用者以進行註冊

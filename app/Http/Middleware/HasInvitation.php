@@ -13,7 +13,7 @@ class HasInvitation
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  Closure(Request): (Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
@@ -21,7 +21,6 @@ class HasInvitation
          * Only for GET requests. Otherwise, this middleware will block our registration.
          */
         if ($request->isMethod('get')) {
-
             /**
              * No token = Good bye.
              */
